@@ -1,6 +1,7 @@
-import './App.css';
-import {useContext} from "react";
-import {ContextData} from "./App";
+// import './App.css';
+// import {useContext} from "react";
+// import {ContextData} from "./App";
+import {useTheme, useUpdateTheme} from "./context/ThemeProvider";
 
 function getTheme(theme) {
     return {
@@ -11,12 +12,14 @@ function getTheme(theme) {
 }
 
 function OurComponent() {
-    const passedValue = useContext(ContextData);
-    console.log(passedValue)
+    // const passedValue = useContext(ContextData);
+    const dark = useTheme();
+    const changeTheme = useUpdateTheme();
+    // console.log(passedValue)
     return (
-        <div style={getTheme(passedValue.dark)} className="App">
+        <div style={getTheme(dark)} className="App">
             OurComponent
-            <button onClick={passedValue.changeTheme}>change Theme</button>
+            <button onClick={changeTheme}>change Theme</button>
         </div>
     );
 }
